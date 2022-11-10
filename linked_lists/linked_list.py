@@ -80,6 +80,14 @@ class linkedList:
             itr = itr.next
             count += 1
 
+    def remove_by_value(self, data):
+        itr = self.head
+        while itr:
+            if data == itr.next.data:
+                itr.next = itr.next.next
+                break
+            itr = itr.next
+
     # Insert a node at the given index
     def insert_at(self, index, data):
         if index<0:
@@ -100,6 +108,18 @@ class linkedList:
             itr = itr.next
             count += 1
 
+    def insert_after_value(self, data_after, data_to_insert):
+        itr = self.head
+        while itr:
+            print(type(itr))
+            if itr.data == data_after:
+                node1 = node(data_to_insert, itr.next)
+                itr.next = node1
+                break
+                
+            itr = itr.next
+
+    
 if __name__ == '__main__':
     ll = linkedList()
     ll.insert_at_begining(5)
@@ -108,8 +128,11 @@ if __name__ == '__main__':
     ll.insert_at_begining(696)
     ll.insert_at_end(69696969)
     ll.insert_values(["Mango", "Banana", "grapes"])
+    ll.insert_after_value("Mango", "Pineapple")
     ll.print()
     ll.insert_at(3, "jackfruit")
     ll.remove_at(2)
+    ll.print()
+    ll.remove_by_value("Banana")
     ll.print()
     ll.get_length()
